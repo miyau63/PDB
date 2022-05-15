@@ -8,14 +8,14 @@ namespace task2
 {
     public class MatrBubl
     {
-        public static int[][] Array;
+        public int[][] Array { get; set; }
 
         public MatrBubl(int[][] a)
         {
             Array = a;
         }
 
-        public static void Show()
+        public void Show()
         {
             for (int i = 0; i < 5; i++)
             {
@@ -27,7 +27,7 @@ namespace task2
             }
         }
 
-        public static void BubbleSort(Func<int, int, bool> comp, Func<int[], int> p)
+        public void BubbleSort(Func<int, int, bool> comp, Func<int[], int> p)
         {
             int[] temp;
             for (int i = 0; i < Array.Length; i++)
