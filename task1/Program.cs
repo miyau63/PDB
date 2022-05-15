@@ -11,11 +11,11 @@ namespace task2
         static void Main(string[] args)
         {
             MatrBubl matr = new MatrBubl(new int[][]{ new int[]{4,9,6},
-                                new int[]{11,0,7},
+                                new int[]{11,0,5},
                                 new int[]{14,1,2},
-                                new int[]{9,1,2},
-                                new int[]{15,3,5}});
-            MatrBubl.Show();
+                                new int[]{10,2,2},
+                                new int[]{15,26,30}});
+            matr.Show();
             
             
                 Console.WriteLine("Выберите тип алгоритма: 1 - по возрастанию, 2 - по убыванию");
@@ -25,9 +25,9 @@ namespace task2
                         Console.WriteLine("Выберите тип сравнения: 1 - по сумме в строке, 2 - по максимальному элементу в строке, 3 - по миниматльному элементу в строке");
                         switch (Console.ReadLine())
                         {
-                            case "1": MatrBubl.BubbleSort((a, b) => (a > b), Operat.Sum); break;
-                            case "2": MatrBubl.BubbleSort((a, b) => (a > b), Operat.Max); break;
-                            case "3": MatrBubl.BubbleSort((a, b) => (a > b), Operat.Min); break;
+                            case "1": matr.BubbleSort((a, b) => (a > b), Operat.Sum); break;
+                            case "2": matr.BubbleSort((a, b) => (a > b), Operat.Max); break;
+                            case "3": matr.BubbleSort((a, b) => (a > b), Operat.Min); break;
                         }
                         break;
 
@@ -36,15 +36,17 @@ namespace task2
                         Console.WriteLine("Выберите тип сравнения: 1 - по сумме в строке, 2 - по максимальному элементу в строке, 3 - по миниматльному элементу в строке");
                         switch (Console.ReadLine())
                         {
-                            case "1": MatrBubl.BubbleSort((a, b) => (a < b), Operat.Sum); break;
-                            case "2": MatrBubl.BubbleSort((a, b) => (a < b), Operat.Max); break;
-                            case "3": MatrBubl.BubbleSort((a, b) => (a < b), Operat.Min); break;
+                            case "1": matr.BubbleSort((a, b) => (a < b), Operat.Sum); break;
+                            case "2": matr.BubbleSort((a, b) => (a < b), Operat.Max); break;
+                            case "3": matr.BubbleSort((a, b) => (a < b), Operat.Min); break;
                         }
                         break;
                 }
             
             
-            MatrBubl.Show();
+            matr.Show();
+
+            Console.ReadKey();
         }
 
         
