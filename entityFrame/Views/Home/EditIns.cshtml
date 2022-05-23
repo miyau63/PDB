@@ -1,0 +1,21 @@
+﻿@model Instrument
+@{
+    ViewBag.Title = "Редактирование инструментов";
+}
+@using (Html.BeginForm("EditIns", "Home"))
+{
+    @Html.HiddenFor(m => m.InstrumentId)
+    <div class="dataBox">
+        <label>Название</label><br />
+        @Html.TextBoxFor(m => m.Name, new { @class = "text-box" })
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+    <div class="dataBox">
+        <label>Категория</label><br />
+        @Html.DropDownListFor(m => m.Categ, new SelectList(new string[] { "духовые", "струнные", "клавишные", "ударные" }))
+    </div>
+    <br />
+    <div class="dataBox">
+        <input type="submit" value="Сохранить" />
+    </div>
+}

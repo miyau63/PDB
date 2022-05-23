@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Instrument>
+@{
+    ViewBag.Title = "Инструменты";
+}
+<h3>Инструменты</h3>
+<table class="table">
+    <tr><td>Инструмент</td><td>Категория</td><td>Количество музыкантов</td><td></td></tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Categ</td>
+
+            <td>@item.Musicians.Count</td>
+            <td>
+                <a asp-action="EditIns" asp-controller="Home" asp-route-id="@item.InstrumentId">Изменить</a> |
+                @Html.ActionLink("Удалить", "DeleteInst", item)
+            </td>
+
+
+        </tr>
+    }
+</table>
+<a asp-action="CreateIns">Добавить инструмент</a>
+<br>
+<a asp-action="Index">Музыканты</a>
+<br>
+<br>
+<h3>Топ музыкальных категорий</h3>
+@{
+    foreach (var s in ViewBag.Top)
+    {
+        <p>@(s.Key)</p>
+    }
+}
+

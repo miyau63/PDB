@@ -1,0 +1,24 @@
+﻿@model Instrument
+@{
+    ViewBag.Title = "Новый инструмент";
+}
+<div>
+    <a asp-action="Instru">Назад</a>
+</div>
+@using (Html.BeginForm("CreateIns", "Home"))
+{
+    @Html.HiddenFor(m => m.InstrumentId)
+    <div class="dataBox">
+        <label>Название</label><br />
+        @Html.TextBox("name")
+        
+    </div>
+    <div class="dataBox">
+        <label>Категория</label><br />
+        @Html.DropDownList("cat", new SelectList(new string[] { "духовые", "струнные", "клавишные", "ударные" }))
+    </div>
+    <br />
+    <div class="dataBox">
+        <input type="submit" value="Сохранить" />
+    </div>
+}

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebApplication4.Models.Musician>
+@{
+    ViewBag.Title = "Музыканты";
+}
+<h3>Все музыканты</h3>
+<table class="table">
+    <tr><td>Имя</td><td>Фамилия</td><td>Инструменты</td></tr>
+    @foreach (var item in Model)
+    {
+        <tr><td>@item.FirstName</td>
+        <td>@item.LastName</td>
+    @{ 
+        string ins = "";
+        foreach(Instrument i in item.Instruments)
+        {
+            if (ins != "") ins += ", ";
+            ins += i.Name;
+        }
+    }
+        <td>@ins</td>
+        <td>
+            <a asp-action="EditMus" asp-controller="Home" asp-route-id="@item.MusicianId">Изменить</a> |
+            @Html.ActionLink("Удалить", "DeleteMus", item)
+        </td>
+    
+    
+    </tr>
+    }
+</table>
+<a asp-action="Create">Добавить исполнителя</a><br>
+<a asp-action="Instru">Инструменты</a><br><br>
+<h3>Самое большое количество инструментов</h3>
+@{ 
+    foreach(string s in ViewBag.Maxi)
+            {
+                <p>@s</p>
+            }
+}

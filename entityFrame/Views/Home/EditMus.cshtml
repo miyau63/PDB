@@ -1,0 +1,41 @@
+﻿@model Musician
+@{
+    ViewBag.Title = "Редактирование пользователя";
+}
+@using (Html.BeginForm("EditMus", "Home"))
+{
+    @Html.HiddenFor(m => m.MusicianId)
+    <div class="dataBox">
+        <label>Имя</label><br />
+        @Html.TextBoxFor(m => m.FirstName, new { @class = "text-box" })
+        @Html.ValidationMessageFor(m => m.FirstName)
+    </div>
+    <div class="dataBox">
+        <label>Фамилия</label><br />
+        @Html.TextBoxFor(m => m.LastName, new { @class = "text-box" })
+        @Html.ValidationMessageFor(m => m.LastName)
+    </div>
+    <div class="form-group">
+        <label>Инструменты</label>
+        <br>
+        @{
+            foreach (Instrument i in ViewBag.Ins)
+            {
+                if (Model.Instruments.Contains(i))
+                {<label style="margin:10px;" class="control-label"><input type="checkbox" name="instr" value=@i.InstrumentId.ToString() class="form-control" checked /> @i.Name</label>}
+            else
+            {
+                <label style="margin:10px;" class="control-label"><input type="checkbox" name="instr" value=@i.InstrumentId.ToString() class="form-control" /> @i.Name</label>
+            }
+
+
+
+        }
+        }
+    </div>
+    <br />
+    <div class="dataBox">
+        <input type="submit" value="Сохранить" />
+    </div>
+}
+
